@@ -1,4 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://dj4prpgfjppmh"]
+[gd_scene load_steps=6 format=3 uid="uid://dj4prpgfjppmh"]
+
+[ext_resource type="PackedScene" uid="uid://b1wsp6k2ic5di" path="res://entities/player/player.tscn" id="1_72s8x"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_esmli"]
 normal = Vector2(0, 1)
@@ -36,3 +38,6 @@ shape = SubResource("WorldBoundaryShape2D_43f5m")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="boundaries/right"]
 position = Vector2(304, 0)
 shape = SubResource("WorldBoundaryShape2D_7iyax")
+
+[node name="Player" parent="." instance=ExtResource("1_72s8x")]
+position = Vector2(152, 500)
