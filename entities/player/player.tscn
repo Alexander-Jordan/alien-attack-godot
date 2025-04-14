@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://b1wsp6k2ic5di"]
+
+[ext_resource type="Script" uid="uid://bt3of2w85s0e7" path="res://entities/player/player.gd" id="1_abrql"]
+[ext_resource type="Texture2D" uid="uid://sqxnuaedgaop" path="res://assets/spritesheet_main.png" id="1_symyc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_abrql"]
+size = Vector2(12, 5)
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_abrql")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1.5)
+shape = SubResource("RectangleShape2D_abrql")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0, 1, 0, 1)
+scale = Vector2(2, 2)
+texture = ExtResource("1_symyc")
+region_enabled = true
+region_rect = Rect2(3, 49, 13, 8)
