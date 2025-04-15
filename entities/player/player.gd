@@ -1,5 +1,4 @@
-extends CharacterBody2D
-class_name Player
+class_name Player extends CharacterBody2D
 ## The player script.
 ##
 ## The basic script for the player ship.
@@ -15,7 +14,7 @@ var speed:int = 2000
 #region FUNCTIONS
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed('fire'):
-			print('Player just fired a missile')
+		print('Player just fired a missile')
 
 func _physics_process(delta: float) -> void:
 	input_pos = get_viewport().get_mouse_position()

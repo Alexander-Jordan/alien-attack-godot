@@ -1,0 +1,53 @@
+[gd_scene load_steps=9 format=3 uid="uid://sbk5mdjrw3qr"]
+
+[ext_resource type="Script" uid="uid://ycifamtttjut" path="res://entities/enemies/octopus/octopus.gd" id="1_dhmy2"]
+[ext_resource type="Texture2D" uid="uid://sqxnuaedgaop" path="res://assets/spritesheet_main.png" id="1_nfvrp"]
+[ext_resource type="Script" uid="uid://d8ighe5h5ur7" path="res://entities/enemies/alien.gd" id="3_nk83w"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_td12h"]
+size = Vector2(12, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nk83w"]
+atlas = ExtResource("1_nfvrp")
+region = Rect2(39, 1, 12, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dhmy2"]
+atlas = ExtResource("1_nfvrp")
+region = Rect2(39, 11, 12, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7quvo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nk83w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dhmy2")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nk83w"]
+size = Vector2(16, 12)
+
+[node name="Octopus" type="CharacterBody2D"]
+script = ExtResource("1_dhmy2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_td12h")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_7quvo")
+autoplay = "default"
+frame_progress = 0.704504
+
+[node name="Alien" type="Node2D" parent="."]
+script = ExtResource("3_nk83w")
+metadata/_custom_type_script = "uid://d8ighe5h5ur7"
+
+[node name="Area2D" type="Area2D" parent="Alien"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Alien/Area2D"]
+shape = SubResource("RectangleShape2D_nk83w")
