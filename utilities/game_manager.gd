@@ -25,9 +25,6 @@ var alien_direction: AlienDirection = AlienDirection.RIGHT:
 			return
 		alien_direction = ad
 		alien_direction_changed.emit(alien_direction)
-## The last StaticBody2D that the aliens encountered.
-## This is used to ignore duplicate alien direction changes.
-var last_static_body: StaticBody2D = null
 ## The current game mode.
 var mode: Mode = Mode.OVER:
 	set(m):

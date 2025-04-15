@@ -1,10 +1,11 @@
 class_name Alien extends Spawnable
 
 #region VARIABLES
-@onready var area_2d: Area2D = $Area2D
+@onready var area_2d_left: Area2D = $Area2D_left
+@onready var area_2d_right: Area2D = $Area2D_right
 
 var can_move: bool = false
-var speed: int = 100
+var speed: int = 1
 var step_distance: Dictionary[String, int] = {
 	'x': 10,
 	'y': 10,
@@ -27,16 +28,16 @@ func _ready() -> void:
 		root_node.position.y += step_distance.y
 	)
 	
-	area_2d.body_entered.connect(func(body: Node2D):
+	area_2d_left.body_entered.connect(func(body: Node2D):
 		if body is StaticBody2D:
-			if GameManager.last_static_body == body:
-				return
-			
-			GameManager.last_static_body = body
-			match GameManager.alien_direction:
-				GameManager.AlienDirection.LEFT:
-					GameManager.alien_direction = GameManager.AlienDirection.RIGHT
-				GameManager.AlienDirection.RIGHT:
-					GameManager.alien_direction = GameManager.AlienDirection.LEFT
+			GameManager.alien_direction = GameManager.AlienDirection.RIGHT
 	)
+	area_2d_right.body_entered.connect(func(body: Node2D):
+		if body is StaticBody2D:
+			GameManager.alien_direction = GameManager.AlienDirection.LEFT
+	)
+
+func _process(delta: float) -> void:
+	if can_move:
+		root_node.position.x += (step_distance.x * GameManager.alien_direction) * speed * delta
 #endregion

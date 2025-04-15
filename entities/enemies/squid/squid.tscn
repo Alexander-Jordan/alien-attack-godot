@@ -4,9 +4,6 @@
 [ext_resource type="Texture2D" uid="uid://sqxnuaedgaop" path="res://assets/spritesheet_main.png" id="1_d6o0p"]
 [ext_resource type="Script" uid="uid://d8ighe5h5ur7" path="res://entities/enemies/alien.gd" id="3_1v086"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_4f5ts"]
-size = Vector2(8, 8)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_1v086"]
 atlas = ExtResource("1_d6o0p")
 region = Rect2(5, 1, 8, 8)
@@ -29,14 +26,14 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1v086"]
+size = Vector2(8, 8)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n11jr"]
-size = Vector2(16, 12)
+size = Vector2(8, 8)
 
-[node name="Squid" type="CharacterBody2D"]
+[node name="Squid" type="Node2D"]
 script = ExtResource("1_4f5ts")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_4f5ts")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_sl2nu")
@@ -47,7 +44,14 @@ frame_progress = 0.195055
 script = ExtResource("3_1v086")
 metadata/_custom_type_script = "uid://d8ighe5h5ur7"
 
-[node name="Area2D" type="Area2D" parent="Alien"]
+[node name="Area2D_left" type="Area2D" parent="Alien"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Alien/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Alien/Area2D_left"]
+position = Vector2(-4, 0)
+shape = SubResource("RectangleShape2D_1v086")
+
+[node name="Area2D_right" type="Area2D" parent="Alien"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Alien/Area2D_right"]
+position = Vector2(4, 0)
 shape = SubResource("RectangleShape2D_n11jr")
