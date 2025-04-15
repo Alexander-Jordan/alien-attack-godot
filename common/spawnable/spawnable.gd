@@ -14,7 +14,7 @@ var is_spawned: bool = false :
 
 #region SIGNALS
 ## Emitted when spawned.
-signal spawned(spawn_point: Vector2, target_node: Node2D)
+signal spawned(spawn_point: Vector2)
 ## Emitted when despawned.
 signal despawned(new_position: Vector2)
 #endregion
@@ -28,6 +28,7 @@ func spawn(spawn_point: Vector2 = Vector2.ZERO) -> void:
 	root_node.process_mode = ProcessMode.PROCESS_MODE_INHERIT
 	root_node.position = spawn_point
 	is_spawned = true
+	spawned.emit(spawn_point)
 
 ## Used to despawn/disable the spawnable.
 func despawn(new_position: Vector2 = Vector2.ZERO) -> void:

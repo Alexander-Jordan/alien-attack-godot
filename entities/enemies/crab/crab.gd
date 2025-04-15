@@ -1,12 +1,17 @@
 class_name Crab extends CharacterBody2D
+## The crab alien.
 
+#region VARIABLES
+## The alien component with various properties shared between alien types.
 @onready var alien: Alien = $Alien
+#endregion
 
-var speed: int = 100
-
+#region FUNCTIONS
 func _ready() -> void:
 	alien.root_node = self
 
 func _physics_process(delta: float) -> void:
-	velocity.x = (alien.step_distance.x * alien.direction) * speed * delta
-	move_and_slide()
+	if alien.can_move:
+		velocity.x = (alien.step_distance.x * GameManager.alien_direction) * alien.speed * delta
+		move_and_slide()
+#endregion

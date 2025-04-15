@@ -51,22 +51,10 @@ position = Vector2(152, 500)
 script = ExtResource("2_0oqm6")
 metadata/_custom_type_script = "uid://bbtatvokdfuhk"
 
-[node name="AlienRow_S1" type="Node2D" parent="AlienRows"]
+[node name="AlienRow_O1" type="Node2D" parent="AlienRows"]
 script = ExtResource("2_7iyax")
-alien_scene = ExtResource("4_5sjox")
-spawn_origin = Vector2(25, 50)
-metadata/_custom_type_script = "uid://difju8uw048uc"
-
-[node name="AlienRow_C2" type="Node2D" parent="AlienRows"]
-script = ExtResource("2_7iyax")
-alien_scene = ExtResource("5_byaf2")
-spawn_origin = Vector2(25, 75)
-metadata/_custom_type_script = "uid://difju8uw048uc"
-
-[node name="AlienRow_C1" type="Node2D" parent="AlienRows"]
-script = ExtResource("2_7iyax")
-alien_scene = ExtResource("5_byaf2")
-spawn_origin = Vector2(25, 100)
+alien_scene = ExtResource("3_0oqm6")
+spawn_origin = Vector2(25, 150)
 metadata/_custom_type_script = "uid://difju8uw048uc"
 
 [node name="AlienRow_O2" type="Node2D" parent="AlienRows"]
@@ -75,8 +63,20 @@ alien_scene = ExtResource("3_0oqm6")
 spawn_origin = Vector2(25, 125)
 metadata/_custom_type_script = "uid://difju8uw048uc"
 
-[node name="AlienRow_O1" type="Node2D" parent="AlienRows"]
+[node name="AlienRow_C1" type="Node2D" parent="AlienRows"]
 script = ExtResource("2_7iyax")
-alien_scene = ExtResource("3_0oqm6")
-spawn_origin = Vector2(25, 150)
+alien_scene = ExtResource("5_byaf2")
+spawn_origin = Vector2(25, 100)
+metadata/_custom_type_script = "uid://difju8uw048uc"
+
+[node name="AlienRow_C2" type="Node2D" parent="AlienRows"]
+script = ExtResource("2_7iyax")
+alien_scene = ExtResource("5_byaf2")
+spawn_origin = Vector2(25, 75)
+metadata/_custom_type_script = "uid://difju8uw048uc"
+
+[node name="AlienRow_S1" type="Node2D" parent="AlienRows"]
+script = ExtResource("2_7iyax")
+alien_scene = ExtResource("4_5sjox")
+spawn_origin = Vector2(25, 50)
 metadata/_custom_type_script = "uid://difju8uw048uc"

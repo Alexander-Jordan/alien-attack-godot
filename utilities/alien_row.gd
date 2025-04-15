@@ -1,29 +1,12 @@
 class_name AlienRow extends Node2D
 
-#region ENUMS
-enum Direction {
-	LEFT = -1,
-	RIGHT = 1,
-}
-#endregion
-
 #region VARIABLES
 @export var alien_scene: PackedScene
 @export var spawn_origin: Vector2 = Vector2.ZERO
 
 var alien_amount: int = 11
 var alien_pool: Array[Alien]
-var direction: Direction = Direction.RIGHT:
-	set(d):
-		if !Direction.values().has(d):
-			return
-		direction = d
-		direction_changed.emit(direction)
 var spacing: int = 20
-#endregion
-
-#region SIGNALS
-signal direction_changed(direction: Direction)
 #endregion
 
 #region FUNCTIONS
@@ -42,8 +25,6 @@ func add_node_and_get_alien() -> Alien:
 			return null
 		
 		add_child(node)
-		alien.move_down.connect(func(): direction = Direction.LEFT if direction == Direction.RIGHT else Direction.RIGHT)
-		direction_changed.connect(func(new_direction: int): alien.change_direction(new_direction))
 		alien.despawned.connect(func(_new_position: Vector2): alien_pool.append(alien))
 	
 	return alien
