@@ -4,6 +4,7 @@ class_name Spawnable2D extends Node2D
 #region VARIABLES
 ## The root node of this game node.
 @export var root_node: Node2D = self
+@export var direction: Vector2 = Vector2.ZERO
 
 ## Has this spawnable been spawned?
 var is_spawned: bool = false :

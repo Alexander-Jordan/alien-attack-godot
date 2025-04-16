@@ -49,8 +49,9 @@ shape = SubResource("WorldBoundaryShape2D_7iyax")
 position = Vector2(152, 500)
 bullet_spawner = NodePath("../projectile_spawners/bullet_spawner")
 
-[node name="AlienGridSpawner" type="Node2D" parent="."]
+[node name="AlienGridSpawner" type="Node2D" parent="." node_paths=PackedStringArray("projectile_spawner")]
 script = ExtResource("2_0oqm6")
+projectile_spawner = NodePath("../projectile_spawners/bullet_spawner")
 metadata/_custom_type_script = "uid://bbtatvokdfuhk"
 
 [node name="Spawner2D" type="Node2D" parent="AlienGridSpawner"]

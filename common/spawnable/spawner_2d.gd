@@ -29,10 +29,12 @@ func add_node_and_get_spawnable() -> Spawnable2D:
 	return spawnable
 
 ## Spawn the specific spawnable assigned to this spawner.
-func spawn(spawn_point: Vector2) -> void:
+func spawn(spawn_point: Vector2, direction: Vector2 = Vector2.ZERO) -> Spawnable2D:
 	var spawnable: Spawnable2D = add_node_and_get_spawnable()
 	if spawnable == null:
-		return
+		return null
 	
+	spawnable.direction = direction
 	spawnable.spawn(spawn_point)
+	return spawnable
 #endregion
