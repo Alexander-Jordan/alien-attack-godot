@@ -1,4 +1,4 @@
-class_name Projectile extends Spawnable
+class_name Projectile2D extends Spawnable2D
 
 #region VARIABLES
 @export var direction: Vector2 = Vector2(0, -1)

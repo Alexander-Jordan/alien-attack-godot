@@ -1,9 +1,8 @@
-class_name Alien extends Spawnable
+class_name Alien extends Spawnable2D
 
 #region VARIABLES
 @onready var area_2d_left: Area2D = $Area2D_left
 @onready var area_2d_right: Area2D = $Area2D_right
-@onready var destructable_2d: Destructable2D = $"../Destructable2D"
 
 var can_move: bool = false
 var speed: int = 1
@@ -15,6 +14,8 @@ var step_distance: Dictionary[String, int] = {
 
 #region FUNCTIONS
 func _ready() -> void:
+	super._ready()
+	
 	GameManager.mode_changed.connect(func(mode: GameManager.Mode):
 		match mode:
 			GameManager.Mode.NEW:
@@ -37,8 +38,6 @@ func _ready() -> void:
 		if body is StaticBody2D:
 			GameManager.alien_direction = GameManager.AlienDirection.LEFT
 	)
-	
-	destructable_2d.destroyed.connect(func(): despawn())
 
 func _process(delta: float) -> void:
 	if can_move:

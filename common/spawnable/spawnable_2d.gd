@@ -1,7 +1,8 @@
-class_name Spawnable extends Node2D
+class_name Spawnable2D extends Node2D
 ## A spawnable component.
 
 #region VARIABLES
+@export var destructable_2d: Destructable2D
 ## The root node of this game node.
 @export var root_node: Node2D = self
 
@@ -19,6 +20,11 @@ signal spawned(spawn_point: Vector2)
 ## Emitted when despawned.
 signal despawned(new_position: Vector2)
 #endregion
+
+#region VARIABLES
+func _ready() -> void:
+	if destructable_2d != null:
+		destructable_2d.destroyed.connect(func(): call_deferred('despawn'))
 
 ## Used to spawn the spawnable.
 func spawn(spawn_point: Vector2 = Vector2.ZERO) -> void:
@@ -41,3 +47,4 @@ func despawn(new_position: Vector2 = Vector2.ZERO) -> void:
 	root_node.position = new_position
 	is_spawned = false
 	despawned.emit(new_position)
+#endregion

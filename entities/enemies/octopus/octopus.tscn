@@ -44,8 +44,9 @@ sprite_frames = SubResource("SpriteFrames_7quvo")
 autoplay = "default"
 frame_progress = 0.704504
 
-[node name="Alien" type="Node2D" parent="." node_paths=PackedStringArray("root_node")]
+[node name="Alien" type="Node2D" parent="." node_paths=PackedStringArray("destructable_2d", "root_node")]
 script = ExtResource("3_nk83w")
+destructable_2d = NodePath("../Destructable2D")
 root_node = NodePath("..")
 metadata/_custom_type_script = "uid://d8ighe5h5ur7"
 

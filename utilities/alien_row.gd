@@ -1,4 +1,4 @@
-class_name AlienRow extends Spawner
+class_name AlienRow extends Spawner2D
 
 #region VARIABLES
 @export var spawn_origin: Vector2 = Vector2.ZERO
