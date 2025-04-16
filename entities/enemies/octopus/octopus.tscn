@@ -40,8 +40,9 @@ sprite_frames = SubResource("SpriteFrames_7quvo")
 autoplay = "default"
 frame_progress = 0.704504
 
-[node name="Alien" type="Node2D" parent="."]
+[node name="Alien" type="Node2D" parent="." node_paths=PackedStringArray("root_node")]
 script = ExtResource("3_nk83w")
+root_node = NodePath("..")
 metadata/_custom_type_script = "uid://d8ighe5h5ur7"
 
 [node name="Area2D_left" type="Area2D" parent="Alien"]
