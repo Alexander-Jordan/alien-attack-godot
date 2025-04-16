@@ -15,9 +15,8 @@ var speed:int = 2000
 
 #region FUNCTIONS
 func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed('fire'):
+	if event.is_action_pressed('fire') and GameManager.mode == GameManager.Mode.PLAYING:
 		projectile_pool.spawn(position)
-		print('Player just fired a missile')
 
 func _physics_process(delta: float) -> void:
 	input_pos = get_viewport().get_mouse_position()
