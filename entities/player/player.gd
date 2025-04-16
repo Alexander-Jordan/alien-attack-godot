@@ -4,6 +4,8 @@ class_name Player extends CharacterBody2D
 ## The basic script for the player ship.
 
 #region VARIABLES
+@export var projectile_pool: ProjectilePool
+
 # used to lock the y-position
 @onready var y_position:float = self.position.y
 
@@ -14,6 +16,7 @@ var speed:int = 2000
 #region FUNCTIONS
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed('fire'):
+		projectile_pool.spawn(position)
 		print('Player just fired a missile')
 
 func _physics_process(delta: float) -> void:

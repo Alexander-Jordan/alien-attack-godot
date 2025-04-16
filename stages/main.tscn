@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dj4prpgfjppmh"]
+[gd_scene load_steps=13 format=3 uid="uid://dj4prpgfjppmh"]
 
 [ext_resource type="PackedScene" uid="uid://b1wsp6k2ic5di" path="res://entities/player/player.tscn" id="1_72s8x"]
 [ext_resource type="Script" uid="uid://bbtatvokdfuhk" path="res://utilities/alien_rows.gd" id="2_0oqm6"]
@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://sbk5mdjrw3qr" path="res://entities/enemies/octopus/octopus.tscn" id="3_0oqm6"]
 [ext_resource type="PackedScene" uid="uid://17dac48jucnt" path="res://entities/enemies/squid/squid.tscn" id="4_5sjox"]
 [ext_resource type="PackedScene" uid="uid://ca27vv4aq66ib" path="res://entities/enemies/crab/crab.tscn" id="5_byaf2"]
+[ext_resource type="Script" uid="uid://by5jonox527q4" path="res://entities/bullets/projectile_pool.gd" id="7_byaf2"]
+[ext_resource type="PackedScene" uid="uid://bx008s8emrtc3" path="res://entities/bullets/bullet.tscn" id="8_xbtqd"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_esmli"]
 normal = Vector2(0, 1)
@@ -44,8 +46,9 @@ shape = SubResource("WorldBoundaryShape2D_43f5m")
 position = Vector2(304, 0)
 shape = SubResource("WorldBoundaryShape2D_7iyax")
 
-[node name="Player" parent="." instance=ExtResource("1_72s8x")]
+[node name="Player" parent="." node_paths=PackedStringArray("projectile_pool") instance=ExtResource("1_72s8x")]
 position = Vector2(152, 500)
+projectile_pool = NodePath("../projectile_pools/BulletPool")
 
 [node name="AlienRows" type="Node2D" parent="."]
 script = ExtResource("2_0oqm6")
@@ -80,3 +83,10 @@ script = ExtResource("2_7iyax")
 alien_scene = ExtResource("4_5sjox")
 spawn_origin = Vector2(25, 50)
 metadata/_custom_type_script = "uid://difju8uw048uc"
+
+[node name="projectile_pools" type="Node" parent="."]
+
+[node name="BulletPool" type="Node2D" parent="projectile_pools"]
+script = ExtResource("7_byaf2")
+spawnable_scene = ExtResource("8_xbtqd")
+metadata/_custom_type_script = "uid://by5jonox527q4"

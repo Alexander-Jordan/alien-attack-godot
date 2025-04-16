@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://bx008s8emrtc3"]
+
+[ext_resource type="Script" uid="uid://cgikt5vdhkago" path="res://common/destruct/destructor.gd" id="1_5hax7"]
+[ext_resource type="Texture2D" uid="uid://sqxnuaedgaop" path="res://assets/spritesheet_main.png" id="2_33ckv"]
+[ext_resource type="Script" uid="uid://d15t41tjraf15" path="res://entities/bullets/projectile.gd" id="3_a3f0k"]
+[ext_resource type="Script" uid="uid://b13fuwtgjl6ye" path="res://common/spawnable/spawnable.gd" id="4_csiuw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a3f0k"]
+size = Vector2(1, 7)
+
+[node name="Bullet" type="Node2D"]
+
+[node name="Destructor2D" type="Area2D" parent="."]
+script = ExtResource("1_5hax7")
+metadata/_custom_type_script = "uid://cgikt5vdhkago"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Destructor2D"]
+shape = SubResource("RectangleShape2D_a3f0k")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_33ckv")
+region_enabled = true
+region_rect = Rect2(42, 21, 1, 7)
+
+[node name="Projectile" type="Node2D" parent="." node_paths=PackedStringArray("root_node")]
+script = ExtResource("3_a3f0k")
+root_node = NodePath("..")
+metadata/_custom_type_script = "uid://d15t41tjraf15"
+
+[node name="Spawnable" type="Node2D" parent="." node_paths=PackedStringArray("root_node")]
+script = ExtResource("4_csiuw")
+root_node = NodePath("..")
+metadata/_custom_type_script = "uid://b13fuwtgjl6ye"
