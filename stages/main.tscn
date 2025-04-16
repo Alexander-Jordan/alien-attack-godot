@@ -1,8 +1,7 @@
-[gd_scene load_steps=13 format=3 uid="uid://dj4prpgfjppmh"]
+[gd_scene load_steps=12 format=3 uid="uid://dj4prpgfjppmh"]
 
 [ext_resource type="PackedScene" uid="uid://b1wsp6k2ic5di" path="res://entities/player/player.tscn" id="1_72s8x"]
-[ext_resource type="Script" uid="uid://bbtatvokdfuhk" path="res://utilities/alien_rows.gd" id="2_0oqm6"]
-[ext_resource type="Script" uid="uid://difju8uw048uc" path="res://utilities/alien_row.gd" id="2_7iyax"]
+[ext_resource type="Script" uid="uid://bbtatvokdfuhk" path="res://utilities/alien_grid_spawner.gd" id="2_0oqm6"]
 [ext_resource type="PackedScene" uid="uid://sbk5mdjrw3qr" path="res://entities/enemies/octopus/octopus.tscn" id="3_0oqm6"]
 [ext_resource type="PackedScene" uid="uid://17dac48jucnt" path="res://entities/enemies/squid/squid.tscn" id="4_5sjox"]
 [ext_resource type="PackedScene" uid="uid://ca27vv4aq66ib" path="res://entities/enemies/crab/crab.tscn" id="5_byaf2"]
@@ -50,39 +49,34 @@ shape = SubResource("WorldBoundaryShape2D_7iyax")
 position = Vector2(152, 500)
 bullet_spawner = NodePath("../projectile_spawners/bullet_spawner")
 
-[node name="AlienRows" type="Node2D" parent="."]
+[node name="AlienGridSpawner" type="Node2D" parent="."]
 script = ExtResource("2_0oqm6")
 metadata/_custom_type_script = "uid://bbtatvokdfuhk"
 
-[node name="AlienRow_O1" type="Node2D" parent="AlienRows"]
-script = ExtResource("2_7iyax")
-spawn_origin = Vector2(25, 150)
+[node name="Spawner2D" type="Node2D" parent="AlienGridSpawner"]
+script = ExtResource("7_xbtqd")
 spawnable_scene = ExtResource("3_0oqm6")
-metadata/_custom_type_script = "uid://difju8uw048uc"
+metadata/_custom_type_script = "uid://b06rqwn0e2w1"
 
-[node name="AlienRow_O2" type="Node2D" parent="AlienRows"]
-script = ExtResource("2_7iyax")
-spawn_origin = Vector2(25, 125)
+[node name="Spawner2D2" type="Node2D" parent="AlienGridSpawner"]
+script = ExtResource("7_xbtqd")
 spawnable_scene = ExtResource("3_0oqm6")
-metadata/_custom_type_script = "uid://difju8uw048uc"
+metadata/_custom_type_script = "uid://b06rqwn0e2w1"
 
-[node name="AlienRow_C1" type="Node2D" parent="AlienRows"]
-script = ExtResource("2_7iyax")
-spawn_origin = Vector2(25, 100)
+[node name="Spawner2D3" type="Node2D" parent="AlienGridSpawner"]
+script = ExtResource("7_xbtqd")
 spawnable_scene = ExtResource("5_byaf2")
-metadata/_custom_type_script = "uid://difju8uw048uc"
+metadata/_custom_type_script = "uid://b06rqwn0e2w1"
 
-[node name="AlienRow_C2" type="Node2D" parent="AlienRows"]
-script = ExtResource("2_7iyax")
-spawn_origin = Vector2(25, 75)
+[node name="Spawner2D4" type="Node2D" parent="AlienGridSpawner"]
+script = ExtResource("7_xbtqd")
 spawnable_scene = ExtResource("5_byaf2")
-metadata/_custom_type_script = "uid://difju8uw048uc"
+metadata/_custom_type_script = "uid://b06rqwn0e2w1"
 
-[node name="AlienRow_S1" type="Node2D" parent="AlienRows"]
-script = ExtResource("2_7iyax")
-spawn_origin = Vector2(25, 50)
+[node name="Spawner2D5" type="Node2D" parent="AlienGridSpawner"]
+script = ExtResource("7_xbtqd")
 spawnable_scene = ExtResource("4_5sjox")
-metadata/_custom_type_script = "uid://difju8uw048uc"
+metadata/_custom_type_script = "uid://b06rqwn0e2w1"
 
 [node name="projectile_spawners" type="Node" parent="."]
 

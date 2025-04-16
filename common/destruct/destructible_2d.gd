@@ -2,12 +2,12 @@ class_name Destructable2D extends Area2D
 ## A simple component to make anything a destructable.
 
 #region VARIABLES
-## To play audio when hit.
-@export var audio_stream_player_2d: AudioStreamPlayer2D
+@export_group('Audio', 'audio_')
 ## The audio streams to choose from when taking hits.
 @export var audio_streams_destruct: Array[AudioStream] = []
 ## The audio streams to choose from when destroyed.
 @export var audio_streams_destroyed: Array[AudioStream] = []
+
 ## The maximum, or default, amount of health.
 @export_range(1, 10) var health_max: int = 1
 
@@ -15,14 +15,15 @@ class_name Destructable2D extends Area2D
 var health: int = health_max:
 	set(h):
 		health = h if h >= 0 else 0
-		play_audio(audio_streams_destruct)
+		destructed.emit()
 		if health <= 0:
-			play_audio(audio_streams_destroyed)
 			destroyed.emit()
 			health = health_max # reset
 #endregion
 
 #region SIGNALS
+## Emitted when destructed.
+signal destructed
 ## Emitted when destroyed.
 signal destroyed
 #endregion
@@ -34,10 +35,4 @@ func destruct(amount: int = health) -> int:
 	var amount_left = amount - health
 	health -= amount
 	return amount_left if amount_left >= 0 else 0
-
-func play_audio(audio_streams: Array[AudioStream]) -> void:
-	if audio_streams.is_empty() or audio_stream_player_2d == null:
-		return
-	audio_stream_player_2d.stream = audio_streams.pick_random()
-	audio_stream_player_2d.play()
 #endregion
