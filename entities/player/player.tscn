@@ -15,7 +15,6 @@ shape = SubResource("RectangleShape2D_abrql")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(0, 1, 0, 1)
-scale = Vector2(2, 2)
 texture = ExtResource("1_symyc")
 region_enabled = true
 region_rect = Rect2(3, 49, 13, 8)

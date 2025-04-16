@@ -1,0 +1,57 @@
+[gd_scene load_steps=9 format=3 uid="uid://ca27vv4aq66ib"]
+
+[ext_resource type="Script" uid="uid://dsufq71g4fvxe" path="res://entities/enemies/crab/crab.gd" id="1_0rr64"]
+[ext_resource type="Texture2D" uid="uid://sqxnuaedgaop" path="res://assets/spritesheet_main.png" id="1_x24by"]
+[ext_resource type="Script" uid="uid://d8ighe5h5ur7" path="res://entities/enemies/alien.gd" id="3_52iet"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_52iet"]
+atlas = ExtResource("1_x24by")
+region = Rect2(22, 1, 11, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wahec"]
+atlas = ExtResource("1_x24by")
+region = Rect2(22, 11, 11, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gq6gn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_52iet")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wahec")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_52iet"]
+size = Vector2(8, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wahec"]
+size = Vector2(8, 8)
+
+[node name="Crab" type="Node2D"]
+script = ExtResource("1_0rr64")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_gq6gn")
+autoplay = "default"
+frame_progress = 0.77227
+
+[node name="Alien" type="Node2D" parent="."]
+script = ExtResource("3_52iet")
+metadata/_custom_type_script = "uid://d8ighe5h5ur7"
+
+[node name="Area2D_left" type="Area2D" parent="Alien"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Alien/Area2D_left"]
+position = Vector2(-4, 0)
+shape = SubResource("RectangleShape2D_52iet")
+
+[node name="Area2D_right" type="Area2D" parent="Alien"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Alien/Area2D_right"]
+position = Vector2(4, 0)
+shape = SubResource("RectangleShape2D_wahec")
