@@ -25,14 +25,10 @@ var fire_cool_down: float = randf_range(fire_min, fire_max)
 func _ready() -> void:
 	GameManager.mode_changed.connect(func(mode: GameManager.Mode):
 		match mode:
-			GameManager.Mode.NEW:
-				can_move = false
-				despawn()
-			GameManager.Mode.OVER:
+			GameManager.Mode.NEW, GameManager.Mode.RESET, GameManager.Mode.OVER:
 				can_move = false
 			GameManager.Mode.PLAYING:
 				can_move = true
-				animated_sprite_2d.visible = true
 	)
 	GameManager.alien_direction_changed.connect(func(_direction: GameManager.AlienDirection):
 		root_node.position.y += step_distance.y
@@ -55,6 +51,10 @@ func _ready() -> void:
 		animated_sprite_2d.visible = false
 		await random_audio_player_2d.play_random_audio_and_await_finished(destructable_2d.audio_streams_destroyed)
 		call_deferred('despawn')
+	)
+	
+	spawned.connect(func(_new_position: Vector2):
+		animated_sprite_2d.visible = true
 	)
 
 func _process(delta: float) -> void:

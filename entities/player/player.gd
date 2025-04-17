@@ -35,7 +35,8 @@ func _ready() -> void:
 	
 	GameManager.mode_changed.connect(func(mode: GameManager.Mode):
 		match mode:
-			GameManager.Mode.NEW:
+			GameManager.Mode.NEW, GameManager.Mode.RESET:
+				bullet_spawner.despawn_all()
 				self.visible = true
 	)
 

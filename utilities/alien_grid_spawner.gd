@@ -13,7 +13,7 @@ var spawners: Array[Spawner2D]
 func _ready() -> void:
 	GameManager.mode_changed.connect(func(mode: GameManager.Mode):
 		match mode:
-			GameManager.Mode.NEW:
+			GameManager.Mode.NEW, GameManager.Mode.RESET:
 				reset()
 	)
 	
@@ -22,10 +22,20 @@ func _ready() -> void:
 			spawners.append(child)
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed('dev_reset'):
+	if [GameManager.Mode.NEW, GameManager.Mode.RESET].has(GameManager.mode):
+		return
+	
+	if event.is_action_pressed('dev_new'):
 		GameManager.mode = GameManager.Mode.NEW
+	if event.is_action_pressed('dev_reset'):
+		GameManager.mode = GameManager.Mode.RESET
+
+func clear() -> void:
+	for spawner in spawners:
+		spawner.despawn_all()
 
 func reset() -> void:
+	clear()
 	var spawn_point: Vector2 = grid_origin
 	for spawner in spawners:
 		for alien in aliens_per_spawner:

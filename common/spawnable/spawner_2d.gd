@@ -3,7 +3,8 @@ class_name Spawner2D extends Node2D
 #region VARIABLES
 @export var spawnable_scene: PackedScene
 
-var spawnable_pool: Array[Spawnable2D] = []
+var spawnables_all: Array[Spawnable2D] = []
+var spawnables_despawned: Array[Spawnable2D] = []
 #endregion
 
 #region FUNCTIONS
@@ -16,7 +17,7 @@ func get_spawnable_from_node(node: Node) -> Spawnable2D:
 
 ## Tries to add the provided scene as a node to the scene tree, and return a spawnable.
 func add_node_and_get_spawnable() -> Spawnable2D:
-	var spawnable: Spawnable2D = spawnable_pool.pop_front()
+	var spawnable: Spawnable2D = spawnables_despawned.pop_front()
 	if spawnable == null:
 		var node: Node = spawnable_scene.instantiate()
 		spawnable = get_spawnable_from_node(node)
@@ -24,7 +25,8 @@ func add_node_and_get_spawnable() -> Spawnable2D:
 			return null
 		
 		add_child(node)
-		spawnable.despawned.connect(func(_new_position: Vector2): spawnable_pool.append(spawnable))
+		spawnables_all.append(spawnable)
+		spawnable.despawned.connect(func(_new_position: Vector2): spawnables_despawned.append(spawnable))
 	
 	return spawnable
 
@@ -37,4 +39,9 @@ func spawn(spawn_point: Vector2, direction: Vector2 = Vector2.ZERO) -> Spawnable
 	spawnable.direction = direction
 	spawnable.spawn(spawn_point)
 	return spawnable
+
+func despawn_all(new_position: Vector2 = Vector2.ZERO) -> void:
+	for spawnable in spawnables_all:
+		if spawnable.is_spawned:
+			spawnable.call_deferred('despawn', new_position)
 #endregion
