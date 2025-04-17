@@ -1,8 +1,16 @@
-[gd_scene load_steps=9 format=3 uid="uid://17dac48jucnt"]
+[gd_scene load_steps=12 format=3 uid="uid://17dac48jucnt"]
 
 [ext_resource type="Script" uid="uid://cu32vj28pdphn" path="res://entities/enemies/squid/squid.gd" id="1_4f5ts"]
 [ext_resource type="Texture2D" uid="uid://sqxnuaedgaop" path="res://assets/spritesheet_main.png" id="1_d6o0p"]
 [ext_resource type="Script" uid="uid://d8ighe5h5ur7" path="res://entities/enemies/alien.gd" id="3_1v086"]
+[ext_resource type="Script" uid="uid://wvthhxshywf7" path="res://common/destruct/destructible_2d.gd" id="4_n11jr"]
+[ext_resource type="Script" uid="uid://drvvt2ajp8o5f" path="res://common/random_audio_player_2d.gd" id="5_sl2nu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1v086"]
+size = Vector2(8, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n11jr"]
+size = Vector2(8, 8)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1v086"]
 atlas = ExtResource("1_d6o0p")
@@ -26,22 +34,15 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_1v086"]
-size = Vector2(8, 8)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_n11jr"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sl2nu"]
 size = Vector2(8, 8)
 
 [node name="Squid" type="Node2D"]
 script = ExtResource("1_4f5ts")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_sl2nu")
-autoplay = "default"
-frame_progress = 0.195055
-
-[node name="Alien" type="Node2D" parent="."]
+[node name="Alien" type="Node2D" parent="." node_paths=PackedStringArray("root_node")]
 script = ExtResource("3_1v086")
+root_node = NodePath("..")
 metadata/_custom_type_script = "uid://d8ighe5h5ur7"
 
 [node name="Area2D_left" type="Area2D" parent="Alien"]
@@ -55,3 +56,24 @@ shape = SubResource("RectangleShape2D_1v086")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Alien/Area2D_right"]
 position = Vector2(4, 0)
 shape = SubResource("RectangleShape2D_n11jr")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_sl2nu")
+autoplay = "default"
+frame_progress = 0.195055
+
+[node name="Destructable2D" type="Area2D" parent="."]
+script = ExtResource("4_n11jr")
+metadata/_custom_type_script = "uid://wvthhxshywf7"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Destructable2D"]
+shape = SubResource("RectangleShape2D_sl2nu")
+
+[node name="RandomAudioPlayer2D" type="AudioStreamPlayer2D" parent="."]
+script = ExtResource("5_sl2nu")
+metadata/_custom_type_script = "uid://drvvt2ajp8o5f"
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2(0, 6)
+collide_with_areas = true
+collide_with_bodies = false

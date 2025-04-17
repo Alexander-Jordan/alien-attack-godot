@@ -13,6 +13,7 @@ enum AlienDirection {
 enum Mode {
 	NEW,
 	PLAYING,
+	RESET,
 	OVER,
 }
 #endregion
@@ -32,6 +33,10 @@ var mode: Mode = Mode.OVER:
 			return
 		mode = m
 		mode_changed.emit(mode)
+		
+		match mode:
+			Mode.NEW, Mode.RESET:
+				alien_direction = AlienDirection.RIGHT
 #endregion
 
 #region SIGNALS
