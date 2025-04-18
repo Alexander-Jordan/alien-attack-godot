@@ -31,6 +31,7 @@ region_enabled = true
 region_rect = Rect2(1, 40, 16, 7)
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+scale = Vector2(0.8, 0.35)
 
 [node name="RandomAudioPlayer2D" type="AudioStreamPlayer2D" parent="."]
 script = ExtResource("5_1towo")
