@@ -22,6 +22,13 @@ enum Speed {
 #endregion
 
 #region VARIABLES
+var aliens_left: int = 0:
+	set(al):
+		if al < 0 or al == aliens_left:
+			return
+		aliens_left = al
+		if aliens_left == 0:
+			mode = Mode.RESET
 ## The current alien direction.
 var alien_direction: AlienDirection = AlienDirection.RIGHT:
 	set(ad):
@@ -46,9 +53,10 @@ var mode: Mode = Mode.OVER:
 		mode_changed.emit(mode)
 		
 		match mode:
+			Mode.NEW:
+				lives = 3
 			Mode.NEW, Mode.RESET:
 				alien_direction = AlienDirection.RIGHT
-				lives = 3
 				speed = Speed.INIT
 var speed: float = Speed.INIT:
 	set(s):

@@ -6,6 +6,7 @@ class_name AlienGridSpawner extends Node2D
 @export var spacing: Vector2 = Vector2(20, 25)
 
 var aliens_per_spawner: int = 11
+var aliens_alive: int = 0
 var spawners: Array[Spawner2D]
 #endregion
 
@@ -40,6 +41,7 @@ func reset() -> void:
 	for spawner in spawners:
 		for alien in aliens_per_spawner:
 			var spawnable: Spawnable2D = spawner.spawn(spawn_point)
+			GameManager.aliens_left += 1
 			if spawnable is Alien:
 				spawnable.projectile_spawner = projectile_spawner
 			spawn_point.x += spacing.x

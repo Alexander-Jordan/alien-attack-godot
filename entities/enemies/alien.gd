@@ -48,9 +48,10 @@ func _ready() -> void:
 	destructable_2d.destroyed.connect(func():
 		can_move = false
 		animated_sprite_2d.visible = false
+		GameManager.speed += (GameManager.speed / 55) * 3
 		await random_audio_player_2d.play_random_audio_and_await_finished(destructable_2d.audio_streams_destroyed)
 		call_deferred('despawn')
-		GameManager.speed += (GameManager.speed / 55) * 3
+		GameManager.aliens_left -= 1
 	)
 	
 	spawned.connect(func(_new_position: Vector2):
