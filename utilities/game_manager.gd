@@ -16,6 +16,9 @@ enum Mode {
 	RESET,
 	OVER,
 }
+enum Speed {
+	INIT = 1,
+}
 #endregion
 
 #region VARIABLES
@@ -37,6 +40,11 @@ var mode: Mode = Mode.OVER:
 		match mode:
 			Mode.NEW, Mode.RESET:
 				alien_direction = AlienDirection.RIGHT
+				speed = Speed.INIT
+var speed: float = Speed.INIT:
+	set(s):
+		speed = Speed.INIT if s < Speed.INIT else s
+		speed_changed.emit(speed)
 #endregion
 
 #region SIGNALS
@@ -44,4 +52,5 @@ var mode: Mode = Mode.OVER:
 signal alien_direction_changed(direction: AlienDirection)
 ## Will be emitted when the game mode has changed.
 signal mode_changed(mode: Mode)
+signal speed_changed(speed: float)
 #endregion
