@@ -36,10 +36,20 @@ func _ready() -> void:
 	area_2d_left.body_entered.connect(func(body: Node2D):
 		if body is StaticBody2D:
 			GameManager.alien_direction = GameManager.AlienDirection.RIGHT
+		if body is Barrier:
+			GameManager.lives = 0
 	)
 	area_2d_right.body_entered.connect(func(body: Node2D):
 		if body is StaticBody2D:
 			GameManager.alien_direction = GameManager.AlienDirection.LEFT
+	)
+	area_2d_left.area_entered.connect(func(area: Area2D):
+		if area is Barrier:
+			GameManager.lives = 0
+	)
+	area_2d_right.area_entered.connect(func(area: Area2D):
+		if area is Barrier:
+			GameManager.lives = 0
 	)
 	
 	destructable_2d.destructed.connect(func():
