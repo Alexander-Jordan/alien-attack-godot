@@ -2,7 +2,7 @@ class_name UfoSpawner extends Spawner2D
 
 @onready var timer: Timer = $Timer
 
-var spawn_points: Array[Vector2] = [Vector2(-10, 25), Vector2(314, 25)]
+var spawn_points: Array[Vector2] = [Vector2(-10, 125), Vector2(314, 125)]
 var directions: Array[Vector2] = [Vector2(1, 0), Vector2(-1, 0)]
 var timer_min: float = 10.0
 var timer_max: float = 30.0

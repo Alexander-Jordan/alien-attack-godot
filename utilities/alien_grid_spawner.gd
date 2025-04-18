@@ -1,7 +1,7 @@
 class_name AlienGridSpawner extends Node2D
 
 #region VARIABLES
-@export var grid_origin: Vector2 = Vector2(25, 150)
+@export var grid_origin: Vector2 = Vector2(50, 250)
 @export var projectile_spawner: Spawner2D
 @export var spacing: Vector2 = Vector2(20, 25)
 
