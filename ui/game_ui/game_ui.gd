@@ -1,20 +1,30 @@
 class_name GameUI extends Control
 
+@export var texture_rects_lives: Array[TextureRect]
+
 @onready var button_back: Button = $VBoxContainer/HBoxContainer/button_back
 @onready var button_restart: Button = $VBoxContainer/HBoxContainer/button_restart
+@onready var label_game_over: Label = $VBoxContainer/ui_end_screen/VBoxContainer/label_game_over
 @onready var label_score: Label = $VBoxContainer/MarginContainer/label_score
 @onready var ui_audio_player: UIAudioPlayer = $UIAudioPlayer
-@onready var ui_end_screen: Control = $VBoxContainer/ui_end_screen
 
 func _ready() -> void:
 	button_restart.pressed.connect(func(): ui_audio_player.button_pressed(); restart())
 	
+	GameManager.lives_changed.connect(func(lives: int):
+		if lives == 3:
+			for texture_rect in texture_rects_lives:
+				texture_rect.show()
+		else:
+			for lost_live in (3 - lives):
+				texture_rects_lives[lost_live-1].hide()
+	)
 	GameManager.mode_changed.connect(func(mode: GameManager.Mode):
 		match mode:
 			GameManager.Mode.NEW, GameManager.Mode.RESET:
-				ui_end_screen.hide()
+				label_game_over.hide()
 			GameManager.Mode.OVER:
-				ui_end_screen.show()
+				label_game_over.show()
 	)
 
 func restart():

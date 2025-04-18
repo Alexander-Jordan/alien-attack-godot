@@ -11,6 +11,7 @@ class_name Player extends CharacterBody2D
 # used to lock the y-position
 @onready var y_position:float = self.position.y
 
+var can_shoot: bool = true
 var input_pos:Vector2 = self.position
 var speed:int = 2000
 #endregion
@@ -29,18 +30,28 @@ func _ready() -> void:
 	)
 	destructable_2d.destroyed.connect(func():
 		self.visible = false
+		destructable_2d.disabled = true
+		can_shoot = false
+		GameManager.lives -= 1
 		random_audio_player_2d.play_random_audio_and_await_finished(destructable_2d.audio_streams_destroyed)
-		GameManager.mode = GameManager.Mode.OVER
+		if GameManager.mode != GameManager.Mode.OVER:
+			await get_tree().create_timer(2).timeout
+			reset()
 	)
 	
 	GameManager.mode_changed.connect(func(mode: GameManager.Mode):
 		match mode:
 			GameManager.Mode.NEW, GameManager.Mode.RESET:
 				bullet_spawner.despawn_all()
-				self.visible = true
+				reset()
 	)
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed('fire') and GameManager.mode == GameManager.Mode.PLAYING:
+	if event.is_action_pressed('fire') and can_shoot and GameManager.mode == GameManager.Mode.PLAYING:
 		bullet_spawner.spawn(Vector2(position.x, position.y - 5), Vector2(0, -1))
+
+func reset() -> void:
+	can_shoot = true
+	self.visible = true
+	destructable_2d.disabled = false
 #endregion

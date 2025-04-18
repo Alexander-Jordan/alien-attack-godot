@@ -7,13 +7,15 @@ class_name Destructable2D extends Area2D
 @export var audio_streams_destruct: Array[AudioStream] = []
 ## The audio streams to choose from when destroyed.
 @export var audio_streams_destroyed: Array[AudioStream] = []
-
+@export var disabled: bool = false
 ## The maximum, or default, amount of health.
 @export_range(1, 10) var health_max: int = 1
 
 ## Amount of health before being destroyed.
 var health: int = health_max:
 	set(h):
+		if disabled:
+			return
 		health = h if h >= 0 else 0
 		destructed.emit()
 		if health <= 0:
