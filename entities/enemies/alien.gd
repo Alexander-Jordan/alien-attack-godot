@@ -11,7 +11,6 @@ class_name Alien extends Spawnable2D
 @onready var ray_cast_2d: RayCast2D = $"../RayCast2D"
 
 var can_move: bool = false
-var speed: int = 1
 var step_distance: Dictionary[String, int] = {
 	'x': 10,
 	'y': 10,
@@ -51,6 +50,7 @@ func _ready() -> void:
 		animated_sprite_2d.visible = false
 		await random_audio_player_2d.play_random_audio_and_await_finished(destructable_2d.audio_streams_destroyed)
 		call_deferred('despawn')
+		GameManager.speed += (GameManager.speed / 55) * 3
 	)
 	
 	spawned.connect(func(_new_position: Vector2):
@@ -59,7 +59,7 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	if can_move:
-		root_node.position.x += (step_distance.x * GameManager.alien_direction) * speed * delta
+		root_node.position.x += (step_distance.x * GameManager.alien_direction) * GameManager.speed * delta
 		
 		if projectile_spawner == null:
 			return

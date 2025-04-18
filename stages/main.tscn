@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dj4prpgfjppmh"]
+[gd_scene load_steps=14 format=3 uid="uid://dj4prpgfjppmh"]
 
 [ext_resource type="PackedScene" uid="uid://b1wsp6k2ic5di" path="res://entities/player/player.tscn" id="1_72s8x"]
 [ext_resource type="Script" uid="uid://bbtatvokdfuhk" path="res://utilities/alien_grid_spawner.gd" id="2_0oqm6"]
@@ -6,7 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://17dac48jucnt" path="res://entities/enemies/squid/squid.tscn" id="4_5sjox"]
 [ext_resource type="PackedScene" uid="uid://ca27vv4aq66ib" path="res://entities/enemies/crab/crab.tscn" id="5_byaf2"]
 [ext_resource type="Script" uid="uid://b06rqwn0e2w1" path="res://common/spawnable/spawner_2d.gd" id="7_xbtqd"]
+[ext_resource type="Script" uid="uid://sqyhf71h2woj" path="res://entities/enemies/ufo/ufo_spawner.gd" id="8_85ei1"]
 [ext_resource type="PackedScene" uid="uid://bx008s8emrtc3" path="res://entities/bullets/bullet.tscn" id="8_xbtqd"]
+[ext_resource type="PackedScene" uid="uid://cqvivrqvaybqt" path="res://entities/enemies/ufo/ufo.tscn" id="9_85ei1"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_esmli"]
 normal = Vector2(0, 1)
@@ -85,3 +87,10 @@ metadata/_custom_type_script = "uid://b06rqwn0e2w1"
 script = ExtResource("7_xbtqd")
 spawnable_scene = ExtResource("8_xbtqd")
 metadata/_custom_type_script = "uid://b06rqwn0e2w1"
+
+[node name="UfoSpawner" type="Node2D" parent="."]
+script = ExtResource("8_85ei1")
+spawnable_scene = ExtResource("9_85ei1")
+metadata/_custom_type_script = "uid://sqyhf71h2woj"
+
+[node name="Timer" type="Timer" parent="UfoSpawner"]
