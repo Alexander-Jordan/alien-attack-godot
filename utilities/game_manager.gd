@@ -22,6 +22,13 @@ enum Speed {
 #endregion
 
 #region VARIABLES
+var aliens_left: int = 0:
+	set(al):
+		if al < 0 or al == aliens_left:
+			return
+		aliens_left = al
+		if aliens_left == 0:
+			mode = Mode.RESET
 ## The current alien direction.
 var alien_direction: AlienDirection = AlienDirection.RIGHT:
 	set(ad):
@@ -29,6 +36,14 @@ var alien_direction: AlienDirection = AlienDirection.RIGHT:
 			return
 		alien_direction = ad
 		alien_direction_changed.emit(alien_direction)
+var lives: int = 3:
+	set(l):
+		if l > 3 or l < 0 or l == lives:
+			return
+		lives = l
+		lives_changed.emit(lives)
+		if lives <= 0:
+			mode = Mode.OVER
 ## The current game mode.
 var mode: Mode = Mode.OVER:
 	set(m):
@@ -38,6 +53,9 @@ var mode: Mode = Mode.OVER:
 		mode_changed.emit(mode)
 		
 		match mode:
+			Mode.NEW:
+				lives = 3
+				SaveSystem.stats.score = 0
 			Mode.NEW, Mode.RESET:
 				alien_direction = AlienDirection.RIGHT
 				speed = Speed.INIT
@@ -50,6 +68,7 @@ var speed: float = Speed.INIT:
 #region SIGNALS
 ## Will be emitted when the alien direction has changed.
 signal alien_direction_changed(direction: AlienDirection)
+signal lives_changed(lives: int)
 ## Will be emitted when the game mode has changed.
 signal mode_changed(mode: Mode)
 signal speed_changed(speed: float)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dj4prpgfjppmh"]
+[gd_scene load_steps=17 format=3 uid="uid://dj4prpgfjppmh"]
 
 [ext_resource type="PackedScene" uid="uid://b1wsp6k2ic5di" path="res://entities/player/player.tscn" id="1_72s8x"]
 [ext_resource type="Script" uid="uid://bbtatvokdfuhk" path="res://utilities/alien_grid_spawner.gd" id="2_0oqm6"]
@@ -9,6 +9,8 @@
 [ext_resource type="Script" uid="uid://sqyhf71h2woj" path="res://entities/enemies/ufo/ufo_spawner.gd" id="8_85ei1"]
 [ext_resource type="PackedScene" uid="uid://bx008s8emrtc3" path="res://entities/bullets/bullet.tscn" id="8_xbtqd"]
 [ext_resource type="PackedScene" uid="uid://cqvivrqvaybqt" path="res://entities/enemies/ufo/ufo.tscn" id="9_85ei1"]
+[ext_resource type="Script" uid="uid://l2xey06wibbs" path="res://utilities/barrier.gd" id="10_06h8b"]
+[ext_resource type="PackedScene" uid="uid://bjuiv0xcg4ee6" path="res://ui/game_ui/game_ui.tscn" id="10_lnxn1"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_esmli"]
 normal = Vector2(0, 1)
@@ -20,6 +22,8 @@ normal = Vector2(1, 0)
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_7iyax"]
 normal = Vector2(-1, 0)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_lnxn1"]
 
 [node name="Main" type="Node2D"]
 
@@ -94,3 +98,15 @@ spawnable_scene = ExtResource("9_85ei1")
 metadata/_custom_type_script = "uid://sqyhf71h2woj"
 
 [node name="Timer" type="Timer" parent="UfoSpawner"]
+
+[node name="Barrier" type="Area2D" parent="."]
+position = Vector2(0, 495)
+script = ExtResource("10_06h8b")
+metadata/_custom_type_script = "uid://l2xey06wibbs"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Barrier"]
+shape = SubResource("WorldBoundaryShape2D_lnxn1")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="GameUI" parent="CanvasLayer" instance=ExtResource("10_lnxn1")]

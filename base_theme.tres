@@ -1,0 +1,6 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://bf70rbohgna56"]
+
+[ext_resource type="FontFile" uid="uid://bl4trfefqm5oh" path="res://assets/fonts/space_invaders.ttf" id="1_6qegq"]
+
+[resource]
+default_font = ExtResource("1_6qegq")

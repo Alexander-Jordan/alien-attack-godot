@@ -2,6 +2,7 @@ class_name Alien extends Spawnable2D
 
 #region VARIABLES
 @export var projectile_spawner: Spawner2D
+@export var score: int = 10
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $"../AnimatedSprite2D"
 @onready var area_2d_left: Area2D = $Area2D_left
@@ -36,10 +37,20 @@ func _ready() -> void:
 	area_2d_left.body_entered.connect(func(body: Node2D):
 		if body is StaticBody2D:
 			GameManager.alien_direction = GameManager.AlienDirection.RIGHT
+		if body is Barrier:
+			GameManager.lives = 0
 	)
 	area_2d_right.body_entered.connect(func(body: Node2D):
 		if body is StaticBody2D:
 			GameManager.alien_direction = GameManager.AlienDirection.LEFT
+	)
+	area_2d_left.area_entered.connect(func(area: Area2D):
+		if area is Barrier:
+			GameManager.lives = 0
+	)
+	area_2d_right.area_entered.connect(func(area: Area2D):
+		if area is Barrier:
+			GameManager.lives = 0
 	)
 	
 	destructable_2d.destructed.connect(func():
@@ -48,9 +59,11 @@ func _ready() -> void:
 	destructable_2d.destroyed.connect(func():
 		can_move = false
 		animated_sprite_2d.visible = false
+		GameManager.speed += (GameManager.speed / 55) * 3
+		GameManager.aliens_left -= 1
+		SaveSystem.stats.score += score
 		await random_audio_player_2d.play_random_audio_and_await_finished(destructable_2d.audio_streams_destroyed)
 		call_deferred('despawn')
-		GameManager.speed += (GameManager.speed / 55) * 3
 	)
 	
 	spawned.connect(func(_new_position: Vector2):
