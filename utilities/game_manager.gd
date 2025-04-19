@@ -55,6 +55,7 @@ var mode: Mode = Mode.OVER:
 		match mode:
 			Mode.NEW:
 				lives = 3
+				SaveSystem.stats.score = 0
 			Mode.NEW, Mode.RESET:
 				alien_direction = AlienDirection.RIGHT
 				speed = Speed.INIT

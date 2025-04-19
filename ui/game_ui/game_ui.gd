@@ -26,6 +26,10 @@ func _ready() -> void:
 			GameManager.Mode.OVER:
 				label_game_over.show()
 	)
+	
+	SaveSystem.stats.score_changed.connect(func(score: int):
+		label_score.text = str(score)
+	)
 
 func restart():
 	button_restart.release_focus()

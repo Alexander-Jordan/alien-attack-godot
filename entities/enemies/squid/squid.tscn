@@ -42,6 +42,7 @@ script = ExtResource("1_4f5ts")
 
 [node name="Alien" type="Node2D" parent="." node_paths=PackedStringArray("root_node")]
 script = ExtResource("3_1v086")
+score = 30
 root_node = NodePath("..")
 metadata/_custom_type_script = "uid://d8ighe5h5ur7"
 

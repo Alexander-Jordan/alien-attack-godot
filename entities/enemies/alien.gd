@@ -2,6 +2,7 @@ class_name Alien extends Spawnable2D
 
 #region VARIABLES
 @export var projectile_spawner: Spawner2D
+@export var score: int = 10
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $"../AnimatedSprite2D"
 @onready var area_2d_left: Area2D = $Area2D_left
@@ -59,9 +60,10 @@ func _ready() -> void:
 		can_move = false
 		animated_sprite_2d.visible = false
 		GameManager.speed += (GameManager.speed / 55) * 3
+		GameManager.aliens_left -= 1
+		SaveSystem.stats.score += score
 		await random_audio_player_2d.play_random_audio_and_await_finished(destructable_2d.audio_streams_destroyed)
 		call_deferred('despawn')
-		GameManager.aliens_left -= 1
 	)
 	
 	spawned.connect(func(_new_position: Vector2):
