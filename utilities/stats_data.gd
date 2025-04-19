@@ -15,9 +15,10 @@ class_name StatsData extends Resource
 		score_changed.emit(score)
 		if score > highscore:
 			highscore = score
+			new_highscore.emit(highscore)
 ## The best score.
 @export var highscore: int = 0
 
 signal score_changed(score: int)
-signal new_highscore
+signal new_highscore(highscore: int)
 #endregion

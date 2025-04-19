@@ -5,10 +5,13 @@ class_name GameUI extends Control
 @onready var button_back: Button = $VBoxContainer/HBoxContainer/button_back
 @onready var button_restart: Button = $VBoxContainer/HBoxContainer/button_restart
 @onready var label_game_over: Label = $VBoxContainer/ui_end_screen/VBoxContainer/label_game_over
-@onready var label_score: Label = $VBoxContainer/MarginContainer/label_score
+@onready var label_highscore: Label = $VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/label_highscore
+@onready var label_score: Label = $VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer2/label_score
 @onready var ui_audio_player: UIAudioPlayer = $UIAudioPlayer
 
 func _ready() -> void:
+	label_highscore.text = str(SaveSystem.stats.highscore)
+	
 	button_restart.pressed.connect(func(): ui_audio_player.button_pressed(); restart())
 	
 	GameManager.lives_changed.connect(func(lives: int):
@@ -29,6 +32,9 @@ func _ready() -> void:
 	
 	SaveSystem.stats.score_changed.connect(func(score: int):
 		label_score.text = str(score)
+	)
+	SaveSystem.stats.new_highscore.connect(func(highscore: int):
+		label_highscore.text = str(highscore)
 	)
 
 func restart():

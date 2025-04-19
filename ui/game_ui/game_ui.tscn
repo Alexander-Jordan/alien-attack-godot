@@ -19,7 +19,7 @@ grow_vertical = 2
 mouse_filter = 1
 theme = ExtResource("1_6u1yh")
 script = ExtResource("1_5rq5h")
-texture_rects_lives = [NodePath("VBoxContainer/lives/HBoxContainer/TextureRect3"), NodePath("VBoxContainer/lives/HBoxContainer/TextureRect2"), NodePath("VBoxContainer/lives/HBoxContainer/TextureRect")]
+texture_rects_lives = [NodePath("VBoxContainer/MarginContainer2/HBoxContainer/TextureRect3"), NodePath("VBoxContainer/MarginContainer2/HBoxContainer/TextureRect2"), NodePath("VBoxContainer/MarginContainer2/HBoxContainer/TextureRect")]
 
 [node name="UIAudioPlayer" type="AudioStreamPlayer" parent="."]
 script = ExtResource("3_xlhta")
@@ -38,11 +38,40 @@ layout_mode = 2
 theme_override_constants/margin_top = 16
 theme_override_constants/margin_bottom = 16
 
-[node name="label_score" type="Label" parent="VBoxContainer/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer"]
 layout_mode = 2
-size_flags_horizontal = 4
-theme_override_font_sizes/font_size = 32
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "SCORE"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="label_score" type="Label" parent="VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 6
 text = "0"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "BEST"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="label_highscore" type="Label" parent="VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "0"
+horizontal_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
@@ -83,7 +112,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 text = "GAME OVER"
 
-[node name="lives" type="MarginContainer" parent="VBoxContainer"]
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 10
 theme_override_constants/margin_left = 16
@@ -91,10 +120,11 @@ theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 16
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/lives"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer2"]
 layout_mode = 2
+size_flags_horizontal = 3
 
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer/lives/HBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/MarginContainer2/HBoxContainer"]
 modulate = Color(0, 1, 0, 1)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -102,7 +132,7 @@ size_flags_vertical = 4
 texture = SubResource("AtlasTexture_bkjh4")
 stretch_mode = 5
 
-[node name="TextureRect2" type="TextureRect" parent="VBoxContainer/lives/HBoxContainer"]
+[node name="TextureRect2" type="TextureRect" parent="VBoxContainer/MarginContainer2/HBoxContainer"]
 modulate = Color(0, 1, 0, 1)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -110,7 +140,7 @@ size_flags_vertical = 4
 texture = SubResource("AtlasTexture_bkjh4")
 stretch_mode = 5
 
-[node name="TextureRect3" type="TextureRect" parent="VBoxContainer/lives/HBoxContainer"]
+[node name="TextureRect3" type="TextureRect" parent="VBoxContainer/MarginContainer2/HBoxContainer"]
 modulate = Color(0, 1, 0, 1)
 layout_mode = 2
 size_flags_horizontal = 0
