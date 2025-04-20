@@ -19,8 +19,8 @@ func _ready() -> void:
 	destructable_2d.destroyed.connect(func():
 		self.visible = false
 		SaveSystem.stats.score += scores.pick_random()
+		spawnable_2d.call_deferred('despawn', Vector2(-10, -10))
 		await random_audio_player_2d.play_random_audio_and_await_finished(destructable_2d.audio_streams_destroyed)
-		spawnable_2d.call_deferred('despawn')
 		self.visible = true
 	)
 	

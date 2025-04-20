@@ -1,5 +1,6 @@
 class_name Bullet extends Node2D
 
+@onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
 @onready var destructor_2d: Destructor2D = $Destructor2D
 @onready var projectile_2d: Projectile2D = $Projectile2D
 @onready var random_audio_player_2d: RandomAudioPlayer2D = $RandomAudioPlayer2D
@@ -17,6 +18,7 @@ func _ready() -> void:
 		projectile_2d.call_deferred('despawn')
 	)
 	projectile_2d.spawned.connect(func(_spawn_point: Vector2):
+		audio_stream_player_2d.play()
 		projectile_2d.can_move = true
 		sprite_2d.visible = true
 	)

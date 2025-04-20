@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://b1wsp6k2ic5di"]
+[gd_scene load_steps=8 format=3 uid="uid://b1wsp6k2ic5di"]
 
 [ext_resource type="Script" uid="uid://bt3of2w85s0e7" path="res://entities/player/player.gd" id="1_abrql"]
 [ext_resource type="Texture2D" uid="uid://sqxnuaedgaop" path="res://assets/spritesheet_main.png" id="1_symyc"]
 [ext_resource type="Script" uid="uid://wvthhxshywf7" path="res://common/destruct/destructible_2d.gd" id="3_sglur"]
 [ext_resource type="Script" uid="uid://drvvt2ajp8o5f" path="res://common/random_audio_player_2d.gd" id="4_bls4j"]
+[ext_resource type="AudioStream" uid="uid://c31wu2riy7c1a" path="res://entities/bullets/explosion.wav" id="4_fkugw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_abrql"]
 size = Vector2(13, 8)
@@ -25,6 +26,7 @@ region_rect = Rect2(3, 49, 13, 8)
 
 [node name="Destructable2D" type="Area2D" parent="."]
 script = ExtResource("3_sglur")
+audio_streams_destroyed = Array[AudioStream]([ExtResource("4_fkugw")])
 metadata/_custom_type_script = "uid://wvthhxshywf7"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Destructable2D"]

@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://bburst80jnoee"]
+[gd_scene load_steps=6 format=3 uid="uid://bburst80jnoee"]
 
 [ext_resource type="Theme" uid="uid://bf70rbohgna56" path="res://base_theme.tres" id="1_omy8q"]
 [ext_resource type="Script" uid="uid://d24c40xgif8ja" path="res://ui/main_menu/main_menu.gd" id="1_uhj5c"]
 [ext_resource type="Script" uid="uid://dkm184vllh04q" path="res://ui/ui_audio_player/ui_audio_player.gd" id="3_3c04x"]
 [ext_resource type="FontFile" uid="uid://dy2utsfjgkpox" path="res://assets/fonts/MachineStd-Bold.otf" id="3_i5wg5"]
+[ext_resource type="AudioStream" uid="uid://b41o3j2c7sffb" path="res://ui/click.wav" id="4_3c04x"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -18,6 +19,7 @@ script = ExtResource("1_uhj5c")
 [node name="UIAudioPlayer" type="AudioStreamPlayer" parent="."]
 bus = &"sfx"
 script = ExtResource("3_3c04x")
+audio_button_pressed = ExtResource("4_3c04x")
 metadata/_custom_type_script = "uid://dkm184vllh04q"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]

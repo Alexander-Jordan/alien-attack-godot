@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://bjuiv0xcg4ee6"]
+[gd_scene load_steps=7 format=3 uid="uid://bjuiv0xcg4ee6"]
 
 [ext_resource type="Script" uid="uid://coiyyrgxo1gvr" path="res://ui/game_ui/game_ui.gd" id="1_5rq5h"]
 [ext_resource type="Theme" uid="uid://bf70rbohgna56" path="res://base_theme.tres" id="1_6u1yh"]
 [ext_resource type="Script" uid="uid://dkm184vllh04q" path="res://ui/ui_audio_player/ui_audio_player.gd" id="3_xlhta"]
 [ext_resource type="Texture2D" uid="uid://sqxnuaedgaop" path="res://assets/spritesheet_main.png" id="4_adpq5"]
+[ext_resource type="AudioStream" uid="uid://b41o3j2c7sffb" path="res://ui/click.wav" id="4_bkjh4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bkjh4"]
 atlas = ExtResource("4_adpq5")
@@ -24,6 +25,7 @@ texture_rects_lives = [NodePath("VBoxContainer/MarginContainer2/HBoxContainer/Te
 [node name="UIAudioPlayer" type="AudioStreamPlayer" parent="."]
 bus = &"sfx"
 script = ExtResource("3_xlhta")
+audio_button_pressed = ExtResource("4_bkjh4")
 metadata/_custom_type_script = "uid://dkm184vllh04q"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
