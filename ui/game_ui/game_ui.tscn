@@ -22,6 +22,7 @@ script = ExtResource("1_5rq5h")
 texture_rects_lives = [NodePath("VBoxContainer/MarginContainer2/HBoxContainer/TextureRect3"), NodePath("VBoxContainer/MarginContainer2/HBoxContainer/TextureRect2"), NodePath("VBoxContainer/MarginContainer2/HBoxContainer/TextureRect")]
 
 [node name="UIAudioPlayer" type="AudioStreamPlayer" parent="."]
+bus = &"sfx"
 script = ExtResource("3_xlhta")
 metadata/_custom_type_script = "uid://dkm184vllh04q"
 

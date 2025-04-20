@@ -41,11 +41,11 @@ func reset() -> void:
 	for spawner in spawners:
 		for alien in aliens_per_spawner:
 			var spawnable: Spawnable2D = spawner.spawn(spawn_point)
-			GameManager.aliens_left += 1
 			if spawnable is Alien:
 				spawnable.projectile_spawner = projectile_spawner
 			spawn_point.x += spacing.x
 			await get_tree().create_timer(0.05).timeout
 		spawn_point = Vector2(grid_origin.x, spawn_point.y - spacing.y)
+	GameManager.aliens_left = 55
 	GameManager.mode = GameManager.Mode.PLAYING
 #endregion

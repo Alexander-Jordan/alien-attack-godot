@@ -1,0 +1,65 @@
+[gd_scene load_steps=5 format=3 uid="uid://bburst80jnoee"]
+
+[ext_resource type="Theme" uid="uid://bf70rbohgna56" path="res://base_theme.tres" id="1_omy8q"]
+[ext_resource type="Script" uid="uid://d24c40xgif8ja" path="res://ui/main_menu/main_menu.gd" id="1_uhj5c"]
+[ext_resource type="Script" uid="uid://dkm184vllh04q" path="res://ui/ui_audio_player/ui_audio_player.gd" id="3_3c04x"]
+[ext_resource type="FontFile" uid="uid://dy2utsfjgkpox" path="res://assets/fonts/MachineStd-Bold.otf" id="3_i5wg5"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_omy8q")
+script = ExtResource("1_uhj5c")
+
+[node name="UIAudioPlayer" type="AudioStreamPlayer" parent="."]
+bus = &"sfx"
+script = ExtResource("3_3c04x")
+metadata/_custom_type_script = "uid://dkm184vllh04q"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("3_i5wg5")
+theme_override_font_sizes/font_size = 32
+text = "SPACE INVADERS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+
+[node name="button_start" type="Button" parent="VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "START"
+
+[node name="button_exit" type="Button" parent="VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "EXIT"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+
+[node name="checkbox_music" type="CheckBox" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+text = "music"
+
+[node name="checkbox_sfx" type="CheckBox" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+text = "SFX"

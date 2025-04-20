@@ -12,6 +12,7 @@ class_name GameUI extends Control
 func _ready() -> void:
 	label_highscore.text = str(SaveSystem.stats.highscore)
 	
+	button_back.pressed.connect(func(): ui_audio_player.button_pressed(); go_back())
 	button_restart.pressed.connect(func(): ui_audio_player.button_pressed(); restart())
 	
 	GameManager.lives_changed.connect(func(lives: int):
@@ -36,6 +37,8 @@ func _ready() -> void:
 	SaveSystem.stats.new_highscore.connect(func(highscore: int):
 		label_highscore.text = str(highscore)
 	)
+	
+	GameManager.mode = GameManager.Mode.NEW
 
 func restart():
 	button_restart.release_focus()
@@ -43,5 +46,5 @@ func restart():
 
 func go_back():
 	button_back.release_focus()
-	GameManager.mode = GameManager.Mode.NEW
+	GameManager.mode = GameManager.Mode.OVER
 	get_tree().change_scene_to_file('res://ui/main_menu/main_menu.tscn')
