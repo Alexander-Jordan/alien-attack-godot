@@ -3,7 +3,6 @@ class_name Ufo extends Node2D
 @onready var destructable_2d: Destructable2D = $Destructable2D
 @onready var random_audio_player_2d: RandomAudioPlayer2D = $RandomAudioPlayer2D
 @onready var spawnable_2d: Spawnable2D = $Spawnable2D
-@onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var visible_on_screen_notifier_2d: VisibleOnScreenNotifier2D = $VisibleOnScreenNotifier2D
 
 var speed: int = 100
@@ -17,11 +16,9 @@ func _ready() -> void:
 		random_audio_player_2d.play_random_audio_and_await_finished(destructable_2d.audio_streams_destruct)
 	)
 	destructable_2d.destroyed.connect(func():
-		self.visible = false
 		SaveSystem.stats.score += scores.pick_random()
-		spawnable_2d.call_deferred('despawn', Vector2(-10, -10))
-		await random_audio_player_2d.play_random_audio_and_await_finished(destructable_2d.audio_streams_destroyed)
-		self.visible = true
+		random_audio_player_2d.play_random_audio_and_await_finished(destructable_2d.audio_streams_destroyed)
+		spawnable_2d.call_deferred('despawn')
 	)
 	
 	GameManager.mode_changed.connect(func(mode: GameManager.Mode):
