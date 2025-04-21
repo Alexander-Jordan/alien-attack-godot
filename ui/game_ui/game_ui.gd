@@ -12,8 +12,8 @@ class_name GameUI extends Control
 func _ready() -> void:
 	label_highscore.text = str(SaveSystem.stats.highscore)
 	
-	button_back.pressed.connect(func(): ui_audio_player.button_pressed(); go_back())
-	button_restart.pressed.connect(func(): ui_audio_player.button_pressed(); restart())
+	button_back.pressed.connect(func(): await ui_audio_player.button_pressed(); go_back())
+	button_restart.pressed.connect(func(): await ui_audio_player.button_pressed(); restart())
 	
 	GameManager.lives_changed.connect(func(lives: int):
 		if lives == 3:

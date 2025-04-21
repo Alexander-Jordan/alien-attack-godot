@@ -13,8 +13,8 @@ func _ready() -> void:
 	music_bus_index = AudioServer.get_bus_index('music')
 	sfx_bus_index = AudioServer.get_bus_index('sfx')
 	
-	button_start.pressed.connect(func(): ui_audio_player.button_pressed(); start())
-	button_exit.pressed.connect(func(): ui_audio_player.button_pressed(); get_tree().quit())
+	button_start.pressed.connect(func(): await ui_audio_player.button_pressed(); start())
+	button_exit.pressed.connect(func(): await ui_audio_player.button_pressed(); get_tree().quit())
 	checkbox_music.toggled.connect(toggle_music)
 	checkbox_sfx.toggled.connect(toggle_sfx)
 	
