@@ -15,6 +15,7 @@ script = ExtResource("1_csiuw")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("2_0n575")
+bus = &"sfx"
 
 [node name="Destructor2D" type="Area2D" parent="."]
 script = ExtResource("1_5hax7")
@@ -29,6 +30,7 @@ root_node = NodePath("..")
 metadata/_custom_type_script = "uid://d15t41tjraf15"
 
 [node name="RandomAudioPlayer2D" type="AudioStreamPlayer2D" parent="."]
+bus = &"sfx"
 script = ExtResource("4_fmqqg")
 metadata/_custom_type_script = "uid://drvvt2ajp8o5f"
 

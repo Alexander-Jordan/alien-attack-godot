@@ -73,6 +73,7 @@ shape = SubResource("RectangleShape2D_7quvo")
 
 [node name="RandomAudioPlayer2D" type="AudioStreamPlayer2D" parent="."]
 process_mode = 3
+bus = &"sfx"
 script = ExtResource("5_7quvo")
 metadata/_custom_type_script = "uid://drvvt2ajp8o5f"
 

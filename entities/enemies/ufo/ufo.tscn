@@ -38,9 +38,12 @@ scale = Vector2(0.8, 0.35)
 
 [node name="RandomAudioPlayer2D" type="AudioStreamPlayer2D" parent="."]
 process_mode = 3
+bus = &"sfx"
 script = ExtResource("5_1towo")
 metadata/_custom_type_script = "uid://drvvt2ajp8o5f"
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("7_7omsp")
+volume_db = -4.0
 autoplay = true
+bus = &"sfx"

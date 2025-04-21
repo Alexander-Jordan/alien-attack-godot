@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://bburst80jnoee"]
+[gd_scene load_steps=7 format=3 uid="uid://bburst80jnoee"]
 
 [ext_resource type="Theme" uid="uid://bf70rbohgna56" path="res://base_theme.tres" id="1_omy8q"]
 [ext_resource type="Script" uid="uid://d24c40xgif8ja" path="res://ui/main_menu/main_menu.gd" id="1_uhj5c"]
 [ext_resource type="Script" uid="uid://dkm184vllh04q" path="res://ui/ui_audio_player/ui_audio_player.gd" id="3_3c04x"]
 [ext_resource type="FontFile" uid="uid://dy2utsfjgkpox" path="res://assets/fonts/MachineStd-Bold.otf" id="3_i5wg5"]
+[ext_resource type="AudioStream" uid="uid://7nw7t1h1koy7" path="res://assets/thinking-overture-115159.mp3" id="3_joh67"]
 [ext_resource type="AudioStream" uid="uid://b41o3j2c7sffb" path="res://ui/click.wav" id="4_3c04x"]
 
 [node name="MainMenu" type="Control"]
@@ -15,6 +16,11 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_omy8q")
 script = ExtResource("1_uhj5c")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_joh67")
+autoplay = true
+bus = &"music"
 
 [node name="UIAudioPlayer" type="AudioStreamPlayer" parent="."]
 bus = &"sfx"

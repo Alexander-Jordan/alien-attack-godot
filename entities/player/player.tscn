@@ -34,5 +34,6 @@ position = Vector2(0, 1.5)
 shape = SubResource("RectangleShape2D_bls4j")
 
 [node name="RandomAudioPlayer2D" type="AudioStreamPlayer2D" parent="."]
+bus = &"sfx"
 script = ExtResource("4_bls4j")
 metadata/_custom_type_script = "uid://drvvt2ajp8o5f"

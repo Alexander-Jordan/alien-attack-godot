@@ -2,6 +2,7 @@ class_name GameUI extends Control
 
 @export var texture_rects_lives: Array[TextureRect]
 
+@onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 @onready var button_back: Button = $VBoxContainer/HBoxContainer/button_back
 @onready var button_restart: Button = $VBoxContainer/HBoxContainer/button_restart
 @onready var label_game_over: Label = $VBoxContainer/ui_end_screen/VBoxContainer/label_game_over
@@ -27,8 +28,10 @@ func _ready() -> void:
 		match mode:
 			GameManager.Mode.NEW, GameManager.Mode.RESET:
 				label_game_over.hide()
+				audio_stream_player.stream_paused = false
 			GameManager.Mode.OVER:
 				label_game_over.show()
+				audio_stream_player.stream_paused = true
 	)
 	
 	SaveSystem.stats.score_changed.connect(func(score: int):
