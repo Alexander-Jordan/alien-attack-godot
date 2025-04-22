@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://bx008s8emrtc3"]
+[gd_scene load_steps=8 format=3 uid="uid://bx008s8emrtc3"]
 
 [ext_resource type="Script" uid="uid://cgikt5vdhkago" path="res://common/destruct/destructor_2d.gd" id="1_5hax7"]
 [ext_resource type="Script" uid="uid://bpblbj03k46w6" path="res://entities/bullets/bullet.gd" id="1_csiuw"]
+[ext_resource type="AudioStream" uid="uid://dhd84s1xiv040" path="res://entities/bullets/laserShoot.wav" id="2_0n575"]
 [ext_resource type="Texture2D" uid="uid://sqxnuaedgaop" path="res://assets/spritesheet_main.png" id="2_33ckv"]
 [ext_resource type="Script" uid="uid://d15t41tjraf15" path="res://entities/bullets/projectile_2d.gd" id="3_a3f0k"]
 [ext_resource type="Script" uid="uid://drvvt2ajp8o5f" path="res://common/random_audio_player_2d.gd" id="4_fmqqg"]
@@ -11,6 +12,10 @@ size = Vector2(1, 7)
 
 [node name="Bullet" type="Node2D"]
 script = ExtResource("1_csiuw")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_0n575")
+bus = &"sfx"
 
 [node name="Destructor2D" type="Area2D" parent="."]
 script = ExtResource("1_5hax7")
@@ -25,6 +30,7 @@ root_node = NodePath("..")
 metadata/_custom_type_script = "uid://d15t41tjraf15"
 
 [node name="RandomAudioPlayer2D" type="AudioStreamPlayer2D" parent="."]
+bus = &"sfx"
 script = ExtResource("4_fmqqg")
 metadata/_custom_type_script = "uid://drvvt2ajp8o5f"
 

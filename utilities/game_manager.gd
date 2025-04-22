@@ -52,13 +52,13 @@ var mode: Mode = Mode.OVER:
 		mode = m
 		mode_changed.emit(mode)
 		
-		match mode:
-			Mode.NEW:
-				lives = 3
-				SaveSystem.stats.score = 0
-			Mode.NEW, Mode.RESET:
-				alien_direction = AlienDirection.RIGHT
-				speed = Speed.INIT
+		if [Mode.NEW, Mode.RESET].has(mode):
+			alien_direction = AlienDirection.RIGHT
+			speed = Speed.INIT
+		
+		if mode == Mode.NEW:
+			lives = 3
+			SaveSystem.stats.score = 0
 var speed: float = Speed.INIT:
 	set(s):
 		speed = Speed.INIT if s < Speed.INIT else s

@@ -62,8 +62,8 @@ func _ready() -> void:
 		GameManager.speed += (GameManager.speed / 55) * 3
 		GameManager.aliens_left -= 1
 		SaveSystem.stats.score += score
-		await random_audio_player_2d.play_random_audio_and_await_finished(destructable_2d.audio_streams_destroyed)
 		call_deferred('despawn')
+		await random_audio_player_2d.play_random_audio_and_await_finished(destructable_2d.audio_streams_destroyed)
 	)
 	
 	spawned.connect(func(_new_position: Vector2):
