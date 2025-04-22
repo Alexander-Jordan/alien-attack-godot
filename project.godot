@@ -15,6 +15,7 @@ run/main_scene="uid://bburst80jnoee"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 boot_splash/image="uid://bfjr7ftmdvy6y"
 config/icon="uid://b0jwkwthfcd3i"
+boot_splash/minimum_display_time=3000
 
 [autoload]
 
@@ -72,4 +73,5 @@ dev_ufo={
 textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+textures/vram_compression/import_etc2_astc=true
 environment/defaults/default_clear_color=Color(0.05044, 0.0416, 0.13, 1)
