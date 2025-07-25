@@ -3,12 +3,12 @@
 [ext_resource type="Script" uid="uid://cgikt5vdhkago" path="res://common/destruct/destructor_2d.gd" id="1_5hax7"]
 [ext_resource type="Script" uid="uid://bpblbj03k46w6" path="res://entities/bullets/bullet.gd" id="1_csiuw"]
 [ext_resource type="AudioStream" uid="uid://dhd84s1xiv040" path="res://entities/bullets/laserShoot.wav" id="2_0n575"]
-[ext_resource type="Texture2D" uid="uid://sqxnuaedgaop" path="res://assets/spritesheet_main.png" id="2_33ckv"]
 [ext_resource type="Script" uid="uid://d15t41tjraf15" path="res://entities/bullets/projectile_2d.gd" id="3_a3f0k"]
 [ext_resource type="Script" uid="uid://drvvt2ajp8o5f" path="res://common/random_audio_player_2d.gd" id="4_fmqqg"]
+[ext_resource type="Texture2D" uid="uid://cm67r10y4g7es" path="res://entities/bullets/bullet.png" id="6_0n575"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a3f0k"]
-size = Vector2(1, 7)
+size = Vector2(2, 8)
 
 [node name="Bullet" type="Node2D"]
 script = ExtResource("1_csiuw")
@@ -35,9 +35,10 @@ script = ExtResource("4_fmqqg")
 metadata/_custom_type_script = "uid://drvvt2ajp8o5f"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_33ckv")
+texture = ExtResource("6_0n575")
 region_enabled = true
-region_rect = Rect2(42, 21, 1, 7)
+region_rect = Rect2(3, 0, 2, 8)
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
-scale = Vector2(0.05, 0.35)
+position = Vector2(-1.49012e-08, 4.17233e-07)
+scale = Vector2(0.1, 0.4)

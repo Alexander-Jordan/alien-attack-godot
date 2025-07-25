@@ -10,10 +10,11 @@ config_version=5
 
 [application]
 
-config/name="Space Invaders"
+config/name="Alien Attack"
 run/main_scene="uid://bburst80jnoee"
 config/features=PackedStringArray("4.4", "GL Compatibility")
-boot_splash/image="uid://bfjr7ftmdvy6y"
+boot_splash/bg_color=Color(0.133333, 0.12549, 0.203922, 1)
+boot_splash/image="uid://b0jwkwthfcd3i"
 config/icon="uid://b0jwkwthfcd3i"
 boot_splash/minimum_display_time=3000
 
