@@ -4,12 +4,12 @@
 [ext_resource type="Script" uid="uid://wvthhxshywf7" path="res://common/destruct/destructible_2d.gd" id="2_dr5fi"]
 [ext_resource type="Script" uid="uid://b13fuwtgjl6ye" path="res://common/spawnable/spawnable_2d.gd" id="2_g1lhv"]
 [ext_resource type="AudioStream" uid="uid://c31wu2riy7c1a" path="res://entities/bullets/explosion.wav" id="3_dt0ny"]
-[ext_resource type="Texture2D" uid="uid://sqxnuaedgaop" path="res://assets/spritesheet_main.png" id="4_1towo"]
 [ext_resource type="Script" uid="uid://drvvt2ajp8o5f" path="res://common/random_audio_player_2d.gd" id="5_1towo"]
+[ext_resource type="Texture2D" uid="uid://jd4l2wvxjj0m" path="res://entities/enemies/ufo/ufo.png" id="5_7omsp"]
 [ext_resource type="AudioStream" uid="uid://cb0ygmkpeujd6" path="res://entities/enemies/ufo/ufo.wav" id="7_7omsp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dt0ny"]
-size = Vector2(16, 7)
+size = Vector2(16, 10)
 
 [node name="Ufo" type="Node2D"]
 script = ExtResource("1_b45wu")
@@ -29,12 +29,13 @@ metadata/_custom_type_script = "uid://b13fuwtgjl6ye"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(1, 0, 0, 1)
-texture = ExtResource("4_1towo")
+texture = ExtResource("5_7omsp")
 region_enabled = true
-region_rect = Rect2(1, 40, 16, 7)
+region_rect = Rect2(0, 3, 16, 10)
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
-scale = Vector2(0.8, 0.35)
+position = Vector2(0, 2.38419e-07)
+scale = Vector2(0.8, 0.5)
 
 [node name="RandomAudioPlayer2D" type="AudioStreamPlayer2D" parent="."]
 process_mode = 3

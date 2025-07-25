@@ -48,7 +48,7 @@ func _ready() -> void:
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed('fire') and can_shoot and GameManager.mode == GameManager.Mode.PLAYING:
-		bullet_spawner.spawn(Vector2(position.x, position.y - 5), Vector2(0, -1))
+		bullet_spawner.spawn(Vector2(position.x, position.y - 8), Vector2(0, -1))
 
 func reset() -> void:
 	can_shoot = true
