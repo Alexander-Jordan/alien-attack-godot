@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bburst80jnoee"]
+[gd_scene format=3 uid="uid://bburst80jnoee"]
 
 [ext_resource type="Theme" uid="uid://bf70rbohgna56" path="res://base_theme.tres" id="1_omy8q"]
 [ext_resource type="Script" uid="uid://d24c40xgif8ja" path="res://ui/main_menu/main_menu.gd" id="1_uhj5c"]
@@ -7,7 +7,7 @@
 [ext_resource type="AudioStream" uid="uid://7nw7t1h1koy7" path="res://assets/thinking-overture-115159.mp3" id="3_joh67"]
 [ext_resource type="AudioStream" uid="uid://b41o3j2c7sffb" path="res://ui/click.wav" id="4_3c04x"]
 
-[node name="MainMenu" type="Control"]
+[node name="MainMenu" type="Control" unique_id=995380680]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -17,18 +17,18 @@ grow_vertical = 2
 theme = ExtResource("1_omy8q")
 script = ExtResource("1_uhj5c")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=2075362165]
 stream = ExtResource("3_joh67")
 autoplay = true
 bus = &"music"
 
-[node name="UIAudioPlayer" type="AudioStreamPlayer" parent="."]
+[node name="UIAudioPlayer" type="AudioStreamPlayer" parent="." unique_id=298886209]
 bus = &"sfx"
 script = ExtResource("3_3c04x")
 audio_button_pressed = ExtResource("4_3c04x")
 metadata/_custom_type_script = "uid://dkm184vllh04q"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1690211638]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -36,7 +36,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="VBoxContainer"]
+[node name="Label" type="Label" parent="VBoxContainer" unique_id=1909886832]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_fonts/font = ExtResource("3_i5wg5")
@@ -45,29 +45,29 @@ text = "ALIEN ATTACK"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer" unique_id=526073570]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6
 
-[node name="button_start" type="Button" parent="VBoxContainer/VBoxContainer"]
+[node name="button_start" type="Button" parent="VBoxContainer/VBoxContainer" unique_id=309445440]
 layout_mode = 2
 text = "START"
 
-[node name="button_exit" type="Button" parent="VBoxContainer/VBoxContainer"]
+[node name="button_exit" type="Button" parent="VBoxContainer/VBoxContainer" unique_id=538008678]
 layout_mode = 2
 text = "EXIT"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=549363524]
 layout_mode = 2
 size_flags_vertical = 6
 
-[node name="checkbox_music" type="CheckBox" parent="VBoxContainer/HBoxContainer"]
+[node name="checkbox_music" type="CheckBox" parent="VBoxContainer/HBoxContainer" unique_id=568973275]
 layout_mode = 2
 size_flags_horizontal = 6
 text = "music"
 
-[node name="checkbox_sfx" type="CheckBox" parent="VBoxContainer/HBoxContainer"]
+[node name="checkbox_sfx" type="CheckBox" parent="VBoxContainer/HBoxContainer" unique_id=2051186004]
 layout_mode = 2
 size_flags_horizontal = 6
 text = "SFX"
